@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <title>Minecraft-Bans-Unify-WebUI</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-wrapper blue">
+        <a href="#" class="brand-logo center">Minecraft Bans Unify WebUI</a>
+      </div>
+    </nav>
+  </header>
+  <main class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>玩家ID - Name</th>
+          <th>头像 - Avatar</th>
+          <th>惩罚类型 - Type</th>
+          <th>开始时间 - Start Time</th>
+          <th>结束时间 - End Time</th>
+          <th>理由 - Reason</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    const tableBody = document.getElementById('table-body');
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'api.php?type=history', true);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        const data = JSON.parse(xhr.responseText);
+        data.forEach(item => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${item.name}</td>
+            <td><img src="https://crafatar.com/avatars/${item.uuid}" alt="UUID" width="32" height="32"></td>
+            <td>${item.type}</td>
+            <td>${item.starttime}</td>
+            <td>${item.endtime}</td>
+            <td>${item.reason}</td>
+          `;
+          tableBody.appendChild(row);
+        });
+      } else {
+        console.error('Error:', xhr.status);
+      }
+    };
+    xhr.send();
+  </script>
+</body>
+</html>

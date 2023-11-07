@@ -1,0 +1,7 @@
+{
+    "Plugin":"Your_Plugin_Name_Here(Support AdvancedBan&BansPlus)",
+    "database_host":"Your Database Server IP Address",
+    "database_name":"Your Database Name",
+    "database_user":"Your Database Username",
+    "database_password":"Your Database Password"
+}
