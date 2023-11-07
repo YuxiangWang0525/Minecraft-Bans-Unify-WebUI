@@ -21,4 +21,4 @@ You only need to modify config.json
 - [ ] MaxBans
 - [ ] BanManager
 
- **Never**:LiteBans Because Litebans already has a complete WebUI and is commercial software, we are unable to support it
+ **Never:LiteBans**   Because Litebans already has a complete WebUI and is commercial software, we are unable to support it
